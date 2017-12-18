@@ -1,5 +1,9 @@
 # Info
-This scripts allow you to backup a db from any server and restore it to another server.
+This scripts allow you to backup a db from any server and restore it a local server.
+
+Backup.ps1 backups a local or remote database to your local c:\temp.
+Restore.ps1 restores a database .bak file to a local server instance
+
 c:\temp is used as folder to place the db backup files (.bak)
 Tested with Sql Server 2008 R2 and Powershell 4
 
