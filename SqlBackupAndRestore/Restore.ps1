@@ -14,8 +14,8 @@ if($dbFilePath -eq ''){
 $dbPath = "`"$dbFilePath`"" 
 . $PSScriptRoot\Configuration.ps1
 
-sqlcmd -S .\dev -U $User -P $Password -i KillConnectionsForDb.sql -v DataBase = "$dbName"
-sqlcmd -S .\dev -U $User -P $Password -i Restore.sql -v DataBase = "$dbName" DbFilePath = "$dbPath" SqlDataFolder = "$SqlDataFolder" 
+sqlcmd -S $ServerForRestore -U $UserForRestore -P $PasswordForRestore -i KillConnectionsForDb.sql -v DataBase = "$dbName"
+sqlcmd -S $ServerForRestore -U $UserForRestore -P $PasswordForRestore -i Restore.sql -v DataBase = "$dbName" DbFilePath = "$dbPath" SqlDataFolder = "$SqlDataFolder" 
 
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
