@@ -5,4 +5,4 @@ Tested with Sql Server 2008 R2 and Powershell 4
 
 # How to use
 - Modify Configuration.ps1 according your requirements
-- Copy a link in the ExampleUsage folder to any location. Right click => properties => 'target:' => modify PitStop to your db name & modify paths in 'target:' and 'start in:' to where you've put this repo
+- Edit links in ExampleUsage to target a database of your choice. Right click => properties => 'target:' => modify PitStop to your db name and for Restore you can also modify dbFilePath to a .bak file of your chosing
