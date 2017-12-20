@@ -25,16 +25,19 @@ if ($ServerForBackup.StartsWith(".")) {
 	$sqlBackupPath = "{0}{1}.bak" -f $BackupShare, $database
 	# remove previous backup file on the backup share	
 	New-PSDrive -Name YDrive -PSProvider filesystem -Root $BackupShare	
-	if (Test-Path YDrive:\PitStop.bak) {
-		Remove-Item YDrive:\PitStop.bak
+	if (Test-Path YDrive:\$database.bak) {
+		Remove-Item YDrive:\$database.bak
 	}
+	Remove-PSDrive -Name YDrive
 }
 
 sqlcmd -S $ServerForBackup -U $UserForBackup -P $PasswordForBackup -i $PSScriptRoot\Backup.sql -v DataBase = "$database" BackupPath = "$sqlBackupPath"
 
+
 if ($sqlBackupPath.StartsWith("\\")) {
-	Write-Host "Copying db backup file to local c:\temp This can take a few minutes..."
-	Copy-Item YDrive:\PitStop.bak -Destination "c:\Temp\"
+	New-PSDrive -Name YDrive -PSProvider filesystem -Root $BackupShare	
+	Write-Host "Copying db backup file to local c:\temp This can take a few minutes..." -f green
+	Copy-Item YDrive:\$database.bak -Destination "c:\Temp\"
 	Remove-PSDrive -Name YDrive
 }
 

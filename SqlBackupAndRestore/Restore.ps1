@@ -1,6 +1,6 @@
 param(
-	[string] $dbName,
-	[string] $dbFilePath
+	[Parameter(Mandatory = $true)] [string] $dbName,
+	[Parameter(Mandatory = $false)] [string] $dbFilePath
 )
 
 if($dbName -eq ''){
@@ -8,7 +8,8 @@ if($dbName -eq ''){
 }
 
 if($dbFilePath -eq ''){
-	throw "dbFilePath parameter not supplied"
+	$dbFilePath = ("c:\temp\{0}.bak" -f $dbName)
+	Write-Host ("dbFilePath parameter not supplied. Taking default path {0}" -f $dbFilePath)
 }
 
 $dbPath = "`"$dbFilePath`"" 
