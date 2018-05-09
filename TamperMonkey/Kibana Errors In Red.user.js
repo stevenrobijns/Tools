@@ -17,7 +17,6 @@ $("document").ready(function() {
         if (errors && errors.length) {
             for (var i = 0; i < errors.length; i++) {
                 var errorsCount = +$(errors[0]).find(".metric-value")[0].innerText;
-                console.log("errorCount: ", errorsCount);
                 if (errorsCount > 0) {
                     errors.css("color", "red");
                 }
