@@ -16,8 +16,13 @@ $("document").ready(function() {
         var errors = $(".metric-container").has("div:contains('Error')");
         if (errors && errors.length) {
             for (var i = 0; i < errors.length; i++) {
-                var errorsCount = +$(errors[0]).find(".metric-value")[0].innerText;
-                if (errorsCount > 0) {
+                var errorCountContainerEl = $(errors[i]).find(".metric-value");
+
+                if (!errorCountContainerEl || !errorCountContainerEl.length)
+                    continue;
+
+                var errorCount = +errorCountContainerEl[0].innerText;
+                if (errorCount > 0) {
                     errors.css("color", "red");
                 }
                 else {
@@ -28,6 +33,6 @@ $("document").ready(function() {
     }
 
     (function(){
-        setInterval(setErrorCountRedIfGreatherThanZero, 5000);
+        setInterval(setErrorCountRedIfGreatherThanZero, 1000);
     })();
 });
