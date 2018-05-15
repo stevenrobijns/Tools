@@ -21,8 +21,8 @@ $("document").ready(function() {
                 if (!errorCountContainerEl || !errorCountContainerEl.length)
                     continue;
 
-                var errorCount = +errorCountContainerEl[0].innerText;
-                if (errorCount > 0) {
+                var errorCount = errorCountContainerEl[0].innerText;
+                if (errorCount != "0") {
                     errors.css("color", "red");
                 }
                 else {
