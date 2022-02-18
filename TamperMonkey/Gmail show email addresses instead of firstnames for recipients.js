@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         New Userscript
+// @name         Show email addresses instead of firstnames for recipients
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://mail.google.com/mail/u/1/
+// @match        https://mail.google.com
 // @icon         https://www.google.com/s2/favicons?domain=google.com
 // @grant        none
 // @run-at        document-start
@@ -25,7 +25,7 @@
                 let email = t[i].getAttribute("email");
                 let html = t[i].textContent = email;
             }
-        }, 500);
+        }, 1000);
 
     }, false);
 
